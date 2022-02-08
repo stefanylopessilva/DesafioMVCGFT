@@ -1,0 +1,61 @@
+@model IEnumerable<ControleStarter.Models.Projeto>
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <img src="/images/AVALIACAO.png" alt="logo-AVALIACAO" width="200" border="0">
+            <hr>
+            <a asp-action="NovoProjeto" aps-controller="Projeto" class="btn btn-dark">Inserir novo Projeto</a><br><br>
+
+            <script>
+                $(document).ready( function () {
+                    $('#projetos').DataTable({
+                        "info": false,
+                        "search": false,
+                        "language": {
+                            "lenghtMenu" : "Mostrando _MENU_ registros",
+                            "zeroRecords": "Desculpe, nada foi encontrado",
+                            "info": "Mostando página _PAGE_ de _PAGES_",
+                            "infoEmpty": "Nenhum registro disponível",
+                            "paginate": {
+                                "first":    "Primeiro",
+                                "last":     "Último",
+                                "next":     "Próximo",
+                                "previous": "Anterior"
+                            }
+                        }
+                    });
+            } );
+            </script>
+
+            <table id="projetos" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome do Starter</th>
+                        <th>Módulo</th>
+                        <th>Avaliação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var projeto in Model)
+                    {
+                        <tr>
+                            <td>@projeto.Starter.Nome</td>
+                            <td>@projeto.Modulo.Nome</td>
+                            <td>@projeto.Avaliacao</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="Projeto/EditarProjeto/@projeto.Id">Editar</a> 
+                                <a class="btn btn-primary btn-sm" href="/Projeto/Apagar/@projeto.Id" role="button">Apagar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

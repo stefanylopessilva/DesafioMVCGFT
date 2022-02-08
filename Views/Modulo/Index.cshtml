@@ -1,0 +1,59 @@
+@model IEnumerable<ControleStarter.Models.Modulo>
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <img src="/images/MODULOS.png" alt="logo-MODULOS" width="200" border="0">
+            <hr>
+            <a asp-action="NovoModulo" aps-controller="Modulo" class="btn btn-dark">Inserir novo Módulo</a><br><br>
+
+            <script>
+                $(document).ready( function () {
+                    $('#modulos').DataTable({
+                        "info": false,
+                        "search": false,
+                        "language": {
+                            "lenghtMenu" : "Mostrando _MENU_ registros",
+                            "zeroRecords": "Desculpe, nada foi encontrado",
+                            "info": "Mostando página _PAGE_ de _PAGES_",
+                            "infoEmpty": "Nenhum registro disponível",
+                            "paginate": {
+                                "first":    "Primeiro",
+                                "last":     "Último",
+                                "next":     "Próximo",
+                                "previous": "Anterior"
+                            }
+                        }
+                    });
+            } );
+            </script>
+
+            <table id="modulos" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Projeto</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var modulo in Model)
+                    {
+                        <tr>
+                            <td>@modulo.Nome</td>
+                            <td>@modulo.Projeto</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="Modulo/EditarModulo/@modulo.Id">Editar</a> 
+                                <a class="btn btn-primary btn-sm" href="/Modulo/Apagar/@modulo.Id" role="button">Apagar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

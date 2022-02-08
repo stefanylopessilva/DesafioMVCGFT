@@ -1,0 +1,46 @@
+@model ControleStarter.DTO.DailyDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Editar Daily</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="Daily" asp-action="Atualizar" method="POST">
+                <input type="hidden" asp-for="Id">
+                <label asp-for="GrupoID">Grupo</label>
+                <select class="form-control" asp-for="GrupoID" asp-items='@(new SelectList(@ViewBag.Grupos, "Id", "ScrumMaster"))'></select>
+                <span asp-validation-for="GrupoID"></span><br>
+                <label asp-for="StarterID">Starter</label>
+                <select class="form-control" asp-for="StarterID" asp-items='@(new SelectList(@ViewBag.Starters, "Id", "Nome"))'></select>
+                <span asp-validation-for="StarterID"></span><br>
+                <label asp-for="Data">Data</label>
+                <input type="date" class="form-control" asp-for="Data" placeholder="99/99/9999">
+                <span asp-validation-for="Data"></span><br>
+                <label asp-for="Fazendo">Fazendo</label>
+                <textarea input type="textarea" class="form-control" asp-for="Fazendo" placeholder="Descrição do que está fazendo"></textarea>
+                <span asp-validation-for="Fazendo"></span><br>
+                <label asp-for="Feito">Feito</label>
+                <textarea input type="textarea" class="form-control" asp-for="Feito" placeholder="Descrição do que foi feito"></textarea>
+                <span asp-validation-for="Feito"></span><br>
+                <label asp-for="Impedimentos">Impedimento</label>
+                <textarea input type="textarea" class="form-control" asp-for="Impedimentos" placeholder="Descrição dos impedimentos"></textarea>
+                <span asp-validation-for="Impedimentos"></span><br>
+                <label asp-for="Presenca">Presença</label>
+                <select class="form-control" asp-for="Presenca">
+                    <option value="0">Faltou</option>
+                    <option value="1">Atrasou</option>
+                    <option value="2">Pontual</option>
+                </select>
+                <span asp-validation-for="Presenca"></span><br>
+                <label asp-for="ModuloID">Módulo</label>
+                <select class="form-control" asp-for="ModuloID" asp-items='@(new SelectList(@ViewBag.Modulos, "Id", "Nome"))'></select>
+                <span asp-validation-for="ModuloID"></span><br>
+                <button class="btn btn-dark">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,55 @@
+@model IEnumerable<ControleStarter.Models.Starter>
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <img src="/images/RELATORIOS.jpg" alt="logo-RELATORIOS" width="200" border="0">
+            <hr>
+
+            <script>
+                $(document).ready( function () {
+                    $('#relatorioTurma').DataTable({
+                        "info": false,
+                        "search": false,
+                        "language": {
+                            "lenghtMenu" : "Mostrando _MENU_ registros",
+                            "zeroRecords": "Desculpe, nada foi encontrado",
+                            "info": "Mostando página _PAGE_ de _PAGES_",
+                            "infoEmpty": "Nenhum registro disponível",
+                            "paginate": {
+                                "first":    "Primeiro",
+                                "last":     "Último",
+                                "next":     "Próximo",
+                                "previous": "Anterior"
+                            }
+                        }
+                    });
+            } );
+            </script>
+
+            <table id="relatorioTurma" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome da Turma</th>
+                        <th>Nome do(a) Starter</th>
+                        <th>4 Letras</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var relatorioTurma in Model)
+                    {
+                        <tr>
+                            <td>@relatorioTurma.ProgramaStart.Nome</td>
+                            <td>@relatorioTurma.Nome</td>
+                            <td>@relatorioTurma.QuatroLetras</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+@model IEnumerable<ControleStarter.Models.ProgramaStart>
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <img src="/images/TURMAS.png" alt="logo-TURMAS" width="200" border="0">
+            <hr>
+            <a asp-action="NovaTurma" aps-controller="ProgramaStart" class="btn btn-dark">Inserir nova Turma</a><br><br>
+
+            <script>
+                $(document).ready( function () {
+                    $('#programaStarters').DataTable({
+                        "info": false,
+                        "search": false,
+                        "language": {
+                            "lenghtMenu" : "Mostrando _MENU_ registros",
+                            "zeroRecords": "Desculpe, nada foi encontrado",
+                            "info": "Mostando página _PAGE_ de _PAGES_",
+                            "infoEmpty": "Nenhum registro disponível",
+                            "paginate": {
+                                "first":    "Primeiro",
+                                "last":     "Último",
+                                "next":     "Próximo",
+                                "previous": "Anterior"
+                            }
+                        }
+                    });
+            } );
+            </script>
+
+            <table id="programaStarters" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome da Turma</th>
+                        <th>Data Inicial</th>
+                        <th>Data Final</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var programaStarter in Model)
+                    {
+                        <tr>
+                            <td>@programaStarter.Nome</td>
+                            <td>@programaStarter.DataInicial.ToShortDateString()</td>
+                            <td>@programaStarter.DataFinal.ToShortDateString()</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="ProgramaStart/EditarProgramaStart/@programaStarter.Id">Editar</a> 
+                                <a class="btn btn-primary btn-sm" href="/ProgramaStart/Apagar/@programaStarter.Id" role="button">Apagar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

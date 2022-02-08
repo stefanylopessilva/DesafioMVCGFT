@@ -1,0 +1,27 @@
+@model ControleStarter.DTO.GrupoDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Cadastrar novo Grupo</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="Grupo" asp-action="Salvar" method="POST">
+                <input type="hidden" asp-for="Id" value="0">
+                <label asp-for="ScrumMaster">Nome do Scrum Master</label>
+                <input type="text" class="form-control" asp-for="ScrumMaster" placeholder="Nome do Scrum Master">
+                <span asp-validation-for="ScrumMaster"></span><br> 
+                <label asp-for="TecnologiaID">Tecnologia</label>
+                <select class="form-control" asp-for="TecnologiaID" asp-items='@(new SelectList(@ViewBag.Tecnologias, "Id", "Nome"))'></select><br>
+                <span asp-validation-for="TecnologiaID"></span><br>
+                <label asp-for="StartersID">Starters do Grupo</label>
+                <select class="form-control" multiple aria-label="multiple select example" asp-for="StartersID" asp-items='@(new SelectList(@ViewBag.Starters, "Id", "Nome"))'></select><br>
+                <span asp-validation-for="StartersID"></span><br>
+                <button class="btn btn-dark">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>

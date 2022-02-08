@@ -1,0 +1,33 @@
+@model ControleStarter.DTO.StarterDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Editar Starter</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="Starter" asp-action="Atualizar" method="POST">
+                <input type="hidden" asp-for="Id">
+                <label asp-for="Nome">Nome do Starter</label>
+                <input type="text" class="form-control" asp-for="Nome" placeholder="Nome do Starter">
+                <span asp-validation-for="Nome"></span><br> 
+                <label asp-for="QuatroLetras">4 Letras</label>
+                <input type="text" class="form-control" asp-for="QuatroLetras" placeholder="ZZZZ">
+                <span asp-validation-for="QuatroLetras"></span><br>
+                <label asp-for="TecnologiaID">Tecnologia</label>
+                <select class="form-control" asp-for="TecnologiaID" asp-items='@(new SelectList(@ViewBag.Tecnologias, "Id", "Nome"))'></select><br>
+                <span asp-validation-for="TecnologiaID"></span><br>
+                <label asp-for="ProgramaStartID">Turma</label>
+                <select class="form-control" asp-for="ProgramaStartID" asp-items='@(new SelectList(@ViewBag.ProgramaStarters, "Id", "Nome"))'></select><br>
+                <span asp-validation-for="ProgramaStartID"></span><br>
+                <label asp-for="ModuloID">Módulo</label>
+                <select class="form-control" asp-for="ModuloID" asp-items='@(new SelectList(@ViewBag.Modulos, "Id", "Nome"))'></select><br>
+                <span asp-validation-for="ModuloID"></span><br>
+                <button class="btn btn-dark">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>

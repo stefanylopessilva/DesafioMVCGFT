@@ -1,0 +1,24 @@
+@model ControleStarter.DTO.TecnologiaDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Cadastrar nova Tecnologia</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="Tecnologia" asp-action="Salvar" method="POST">
+                <input type="hidden" asp-for="Id" value="0">
+                <label asp-for="Nome">Nome da Tecnologia</label>
+                <input type="text" class="form-control" asp-for="Nome" placeholder="Nome da Tecnologia">
+                <span asp-validation-for="Nome"></span><br> 
+                <label asp-for="Descricao">Descrição</label>
+                <textarea input type="textarea" class="form-control" asp-for="Descricao" placeholder="Descrição"></textarea>
+                <span asp-validation-for="Descricao"></span><br>
+                <button class="btn btn-dark">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>            

@@ -1,0 +1,27 @@
+@model ControleStarter.DTO.ProjetoDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Cadastrar novo Projeto</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="Projeto" asp-action="Salvar" method="POST">
+                <input type="hidden" asp-for="Id" value="0">
+                <label asp-for="StarterID">Starter</label>
+                <select class="form-control" asp-for="StarterID" asp-items='@(new SelectList(@ViewBag.Starters, "Id", "Nome"))'></select>
+                <span asp-validation-for="StarterID"></span><br>
+                <label asp-for="Avaliacao">Avaliação</label>
+                <input type="text" class="form-control" asp-for="Avaliacao" placeholder="Avaliação (Exceeds expectations/Meets expectations/Does not meet expectations)">
+                <span asp-validation-for="Avaliacao"></span><br> 
+                <label asp-for="ModuloID">Etapa</label>
+                <select class="form-control" asp-for="ModuloID" asp-items='@(new SelectList(@ViewBag.Modulos, "Id", "Nome"))'></select>
+                <span asp-validation-for="ModuloID"></span><br>
+                <button class="btn btn-dark">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>

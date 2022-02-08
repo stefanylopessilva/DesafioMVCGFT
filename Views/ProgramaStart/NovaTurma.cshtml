@@ -1,0 +1,27 @@
+@model ControleStarter.DTO.ProgramaStartDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Cadastrar nova Turma</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="ProgramaStart" asp-action="Salvar" method="POST">
+                <input type="hidden" asp-for="Id" value="0">
+                <label asp-for="Nome">Nome da Turma</label>
+                <input type="text" class="form-control" asp-for="Nome" placeholder="Turma 00">
+                <span asp-validation-for="Nome"></span><br> 
+                <label asp-for="DataInicial">Data Inicial</label>
+                <input type="date" class="form-control" asp-for="DataInicial" placeholder="99/99/9999">
+                <span asp-validation-for="DataInicial"></span><br>
+                <label asp-for="DataFinal">Data Final</label>
+                <input type="date" class="form-control" asp-for="DataFinal" placeholder="99/99/9999">
+                <span asp-validation-for="DataFinal"></span><br>
+                <button class="btn btn-dark">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>            

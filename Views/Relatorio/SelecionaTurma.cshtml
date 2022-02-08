@@ -1,0 +1,18 @@
+@model ControleStarter.DTO.StarterDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h5 class="card-title">Lista de Starters por Turma</h5>
+            <form class="form-horizontal" asp-controller="Relatorio" asp-action="RelatorioListaStarter" method="POST">
+                <label asp-for="ProgramaStartID">Escolha a Turma</label>
+                <select class="form-control" asp-for="ProgramaStartID" asp-items='@(new SelectList(@ViewBag.ProgramaStarters, "Id", "Nome"))'></select><br>
+                <button class="btn btn-primary">Gerar Relatório</button>
+            </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,42 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="dropdown-item" asp-controller="Home" asp-action="Index" title="Manage">
+                <i class="fas fa-user-circle fa-fw"></i>
+                Olá @User.FindFirst("Nome").Value!
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <i class="fas fa-sign-in-alt"></i>
+                Sair
+            </a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" asp-area="Identity" asp-page="/Account/Register">
+                <i class="fas fa-user-circle fa-fw"></i>
+                Registrar
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" asp-area="Identity" asp-page="/Account/Login">
+                <i class="fas fa-sign-in-alt"></i>
+                Entrar
+            </a>
+        </li>
+    </ul>
+} 

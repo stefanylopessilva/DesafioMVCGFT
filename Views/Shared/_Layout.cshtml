@@ -1,0 +1,95 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Control</title>
+
+    <!-- Fontes personalizadas para este template -->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Plugin de nível de página CSS -->
+    <link href="~/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Datatables CSS
+            <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+        -->
+    <!-- Estilos personalizados para este template -->
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
+</head>
+
+<body id="page-top">
+
+        <!-- Navbar -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+        <a class="navbar-brand mr-1" asp-controller="Home" asp-action="Index"><img src="/images/Logo.png" alt="Logo-GFT" width="150" height="30"border="0" /></a>
+
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                </div>
+            </div>
+        </form>
+
+        <partial name = "_LoginPartial" />
+        
+    </nav>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+
+        <div id="content-wrapper">
+
+            <div class="container-fluid">
+                <h2>@ViewData["Title"]</h2>
+                @RenderBody()
+            </div>
+
+            <!-- Sticky Footer -->
+            <footer class="partial-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <p><span>Copyright © GFT @DateTime.Now.Year</span></p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- Botão de rolamento superior -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Scripts personalizados para todas as páginas -->
+    <script src="~/js/sb-admin.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+@model ControleStarter.DTO.ModuloDTO
+
+@{
+    Layout = "_LayoutMenuLateral";
+}
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            <h3>Cadastrar novo Modulo</h3>
+            <hr>
+            <form class="form-horizontal" asp-controller="Modulo" asp-action="Salvar" method="POST">
+                <input type="hidden" asp-for="Id" value="0">
+                <label asp-for="Nome">Nome do Modulo</label>
+                <input type="text" class="form-control" asp-for="Nome" placeholder="Nome do Módulo">
+                <span asp-validation-for="Nome"></span><br> 
+                <label asp-for="Projeto">Descrição do projeto</label>
+                <input type="text" class="form-control" asp-for="Projeto" placeholder="Descrição do projeto sendo realizado para o módulo">
+                <span asp-validation-for="Projeto"></span><br>
+                <button class="btn btn-dark">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
